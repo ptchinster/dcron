@@ -28,11 +28,11 @@ CFLAGS ?= -O2
 CFLAGS += -Wall -Wextra -Wstrict-prototypes -Wno-missing-field-initializers -Wfloat-equal -fstack-protector-all -Wformat-security -Wformat=2 -fPIE 
 CFLAGS += -Wl,-z,nodump -Wl,-z,noexecstack -Wl,-z,noexecheap -Wl,-z,relro -Wl,-z,now -Wl,-z,nodlopen -Wl,-z,-pie
 CFLAGS += -Wno-format-nonliteral -Wno-sign-compare
-SRCS = main.c subs.c database.c job.c concat.c chuser.c
-OBJS = main.o subs.o database.o job.o concat.o chuser.o
-TABSRCS = crontab.c chuser.c
-TABOBJS = crontab.o chuser.o
-PROTOS = protos.h
+SRCS = src/main.c src/subs.c src/database.c src/job.c src/concat.c src/chuser.c
+OBJS = build/main.o build/subs.o build/database.o build/job.o build/concat.o build/chuser.o
+TABSRCS = src/crontab.c src/chuser.c
+TABOBJS = build/crontab.o build/chuser.o
+PROTOS = build/protos.h
 LIBS =
 LDFLAGS =
 DEFS =  -DVERSION='"$(VERSION)"' \
@@ -41,7 +41,7 @@ DEFS =  -DVERSION='"$(VERSION)"' \
 		-DTIMESTAMP_FMT='"$(TIMESTAMP_FMT)"'
 
 # save variables needed for `make install` in config
-all: $(PROTOS) crond crontab ;
+all: protos.h crond crontab ;
 	rm -f config
 	echo "PREFIX = $(PREFIX)" >> config
 	echo "SBINDIR = $(SBINDIR)" >> config
@@ -53,35 +53,36 @@ all: $(PROTOS) crond crontab ;
 	echo "CRONSTAMPS = $(CRONSTAMPS)" >> config
 
 protos.h: $(SRCS) $(TABSRCS)
-	fgrep -h Prototype $(SRCS) $(TABSRCS) > protos.h
+	mkdir -p build/ out/ # for later
+	fgrep -h Prototype $(SRCS) $(TABSRCS) > $(PROTOS)
 
 crond: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o crond
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o out/crond
 
 crontab: $(TABOBJS)
-	$(CC) $(CLFAGS) $(LDFLAGS) $^ -o crontab
+	$(CC) $(CLFAGS) $(LDFLAGS) $^ -o out/crontab
 
-%.o: %.c defs.h $(PROTOS)
+build/%.o: src/%.c src/defs.h $(PROTOS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(DEFS) $< -o $@
 
 install:
 	$(INSTALL_PROGRAM) -m0700 -g root crond $(DESTDIR)$(SBINDIR)/crond
 	$(INSTALL_PROGRAM) -m4750 -g $(CRONTAB_GROUP) crontab $(DESTDIR)$(BINDIR)/crontab
-	$(INSTALL_DATA) crontab.1 $(DESTDIR)$(MANDIR)/man1/crontab.1
-	$(INSTALL_DATA) crond.8 $(DESTDIR)$(MANDIR)/man8/crond.8
+	$(INSTALL_DATA) out/man/crontab.1 $(DESTDIR)$(MANDIR)/man1/crontab.1
+	$(INSTALL_DATA) out/man/crond.8 $(DESTDIR)$(MANDIR)/man8/crond.8
 	$(INSTALL_DIR) $(DESTDIR)$(SCRONTABS)
 	$(INSTALL_DIR) $(DESTDIR)$(CRONTABS)
 	$(INSTALL_DIR) $(DESTDIR)$(CRONSTAMPS)
 
 clean: force
-	rm -f *.o $(PROTOS)
-	rm -f crond crontab config
+	rm -rf out/ build/ config
 
 force: ;
 
 man: force
-	-pandoc -t man -f markdown -s crontab.markdown -o crontab.1
-	-pandoc -t man -f markdown -s crond.markdown -o crond.8
+	mkdir -p out/man/
+	-pandoc -t man -f markdown -s man/crontab.md -o out/man/crontab.1
+	-pandoc -t man -f markdown -s man/crond.md -o out/man/crond.8
 
 # for maintainer's use only
 TARNAME = /home/abs/_dcron/dcron-$(VERSION).tar.gz
