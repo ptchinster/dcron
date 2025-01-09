@@ -21,6 +21,8 @@ git
 
   * Documentation and error message updates.
 
+  * Fixed CLFAGS typo in makefile
+
 v4.6 09-March-2024
   * Took over ownership of project, since last version was over a decade ago. Changed associated URLs.
 

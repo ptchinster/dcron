@@ -59,7 +59,7 @@ crond: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o crond
 
 crontab: $(TABOBJS)
-	$(CC) $(CLFAGS) $(LDFLAGS) $^ -o crontab
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o crontab
 
 %.o: %.c defs.h $(PROTOS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(DEFS) $< -o $@
