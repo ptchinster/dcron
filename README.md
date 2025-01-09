@@ -104,12 +104,9 @@ You should schedule `crond` to run automatically from system startup, using
 `/etc/rc.local` or a similar mechanism. `crond` automatically detaches. By default
 it logs all events <= loglevel NOTICE to syslog.
 
-The crontab files are normally located in `/var/spool/cron/crontabs`, and timestamps
-are normally in `/var/spool/cron/cronstamps`. These directories normally have permissions:
-
-	drwxr-xr-x  2 root   root     4096 Jan  6 18:50 /var/spool/cron
-	drwxr-xr-x  1 root   root        0 Jan  6 18:58 /var/spool/cron/crontabs
-	drwxr-xr-x  1 root   root        0 Jan  6 18:58 /var/spool/cron/cronstamps/
+The crontab files and timestamps are usually located in
+`/var/spool/cron/cron{tabs,stamps}/` directories respectively.
+These directories normally have permissions `755`.
 
 Here is the superuser's crontab, created using `sudo crontab -e`:
 
