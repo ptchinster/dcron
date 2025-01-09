@@ -67,21 +67,23 @@ crontab: $(TABOBJS)
 install:
 	$(INSTALL_PROGRAM) -m0700 -g root crond $(DESTDIR)$(SBINDIR)/crond
 	$(INSTALL_PROGRAM) -m4750 -g $(CRONTAB_GROUP) crontab $(DESTDIR)$(BINDIR)/crontab
-	$(INSTALL_DATA) crontab.1 $(DESTDIR)$(MANDIR)/man1/crontab.1
-	$(INSTALL_DATA) crond.8 $(DESTDIR)$(MANDIR)/man8/crond.8
+	$(INSTALL_DATA) out/man/crontab.1 $(DESTDIR)$(MANDIR)/man1/crontab.1
+	$(INSTALL_DATA) out/man/crond.8 $(DESTDIR)$(MANDIR)/man8/crond.8
 	$(INSTALL_DIR) $(DESTDIR)$(SCRONTABS)
 	$(INSTALL_DIR) $(DESTDIR)$(CRONTABS)
 	$(INSTALL_DIR) $(DESTDIR)$(CRONSTAMPS)
 
 clean: force
+	rm -rf out/
 	rm -f *.o $(PROTOS)
 	rm -f crond crontab config
 
 force: ;
 
 man: force
-	-pandoc -t man -f markdown -s crontab.markdown -o crontab.1
-	-pandoc -t man -f markdown -s crond.markdown -o crond.8
+	mkdir -p out/man/
+	-pandoc -t man -f markdown -s man/crontab.md -o out/man/crontab.1
+	-pandoc -t man -f markdown -s man/crond.md -o out/man/crond.8
 
 # for maintainer's use only
 TARNAME = /home/abs/_dcron/dcron-$(VERSION).tar.gz
