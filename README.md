@@ -138,43 +138,28 @@ EXTRAS
 The following are included in the "extra" folder. None of them are installed
 by `make install`:
 
-crond.rc
-:	This is an example rc script to start and stop crond. It could be placed in
-/etc/rc.d or /etc/init.d in suitable systems.
-
-crond.conf
-:	This contains user-modifiable settings for crond.rc. The sample crond.rc
-expects to source this file from /etc/conf.d/crond.
-
-run-cron
-:	This simple shell script is a bare-bones alternative to Debian's run-parts.
-
-crond.service
-:      This is an example sysvinit service to start and stop crond. It
-could be placed in /lib/systemd/system in suitable systems.
-
-root.crontab
-:	This is an example crontab to install for the root user, or to install
-in /etc/cron.d. It runs any executable scripts located in the directories /etc/cron.hourly,
-/etc/cron.daily, /etc/cron.weekly, and /etc/cron.monthly at the appropriate times.
-This example uses the run-cron script mentioned above, and relies on you to
-create the /etc/cron.* directories.
-
-prune-cronstamps
-:	crond never removes any files from your cronstamps directory. If usernames
-are abandoned, or cron job names are abandoned, unused files will accumulate
-there. This simple cronjob will prune any cronstamp files older than three months.
-It will run weekly if placed in /etc/cron.d.
-
-crond.logrotate
-:	This is an example to place in /etc/logrotate.d. This config file assumes you
-run crond using -L /var/log/crond.log. If you run crond using syslog instead (the default),
-you may prefer to configure the rotation of all your syslog-generated logs in a
-single config file.
-
-crontab.vim
-:	This makes vim handle backup files in way that doesn't interfere with crontab's security
-model.
+- `crond.rc`: This is an example rc script to start and stop crond.
+   It could be placed in `/etc/rc.d` or `/etc/init.d` in suitable systems.
+- `crond.conf`: This contains user-modifiable settings for crond.rc.
+  The sample `crond.rc` expects to source this file from `/etc/conf.d/crond`.
+- `run-cron`: This simple shell script is a bare-bones alternative to Debian's `run-parts`.
+- `crond.service`: This is an example sysvinit service to start and stop crond.
+  It could be placed in `/lib/systemd/system` in suitable systems.
+- `root.crontab`: This is an example crontab to install for the root user, or to install
+  in `/etc/cron.d`. It runs any executable scripts located in the directories
+  `/etc/cron.{hourly,daily,weekly,monthly}`  at the appropriate times.
+  This example uses the `run-cron` script mentioned above, and relies on you to
+  create the /etc/cron.* directories.
+- `prune-cronstamps`: `crond` never removes any files from your cronstamps directory.
+  If usernames are abandoned, or cron job names are abandoned, unused files will accumulate
+  there. This simple cronjob will prune any cronstamp files older than three months.
+  It will run weekly if placed in `/etc/cron.d`.
+- `crond.logrotate`: This is an example to place in `/etc/logrotate.d`. This config file assumes you
+  run crond using `-L /var/log/crond.log`. If you run crond using `syslog` instead (the default),
+  you may prefer to configure the rotation of all your syslog-generated logs
+  in a single config file.
+- `crontab.vim`: This makes vim handle backup files in way that doesn't interfere
+  with crontab's security model.
 
 
 BUG REPORTS, SUBMISSIONS
