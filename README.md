@@ -160,8 +160,9 @@ by `make install`:
 BUG REPORTS, SUBMISSIONS
 ------------------------
 
-Send any bug reports and source code changes to James Pryor:
-<dubiousjim@gmail.com>.
+For bug reports and code changes please use GitHub's integrated
+[issues](https://github.com/dubiousjim/dcron/issues)
+and [pull requests](https://github.com/dubiousjim/dcron/pull).
 
 We aim to keep this program simple, secure, and bug-free, in preference to
 adding features. Those advanced features we have added recently (such as
