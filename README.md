@@ -34,11 +34,9 @@ most of the time, and we pay close attention to leaving descriptors open in the
 DOWNLOADING
 -----------
 
-The project is hosted at: <https://github.com/ptchinster/dcron>.
-
-The latest version is 4.6, which can be downloaded here:
-<https://github.com/ptchinster/dcron/archive/refs/tags/v4.6.tar.gz>.
-
+The project is hosted at [GitHub](https://github.com/ptchinster/dcron)
+and the latest version can be downloaded from the
+[tags page](https://github.com/ptchinster/dcron/tags).
 
 COMPILING
 ---------
