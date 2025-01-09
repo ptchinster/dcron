@@ -1,7 +1,4 @@
+build/
 out/
 *.swp
-protos.h
-*.o
 config
-crond
-crontab
