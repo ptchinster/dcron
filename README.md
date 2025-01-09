@@ -193,3 +193,10 @@ CREDITS
 
 We use `concat`, a lightweight replacement for `asprintf`, in order to be more
 portable. This was written by Solar Designer and is in the public domain.
+
+LICENSE
+-------
+
+This project licensed under GNU General Public License 2 or any later version.
+For the full license text please see the [COPYING file](./COPYING) or the
+[GNU Project's website](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
