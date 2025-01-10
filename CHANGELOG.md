@@ -5,19 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-git
-  * Numeric loglevels specified by 'crond -l <level>' weren't being validated.
-    Now we no longer accept numeric loglevels; they must be specified
-    symbolically. Thanks to Rogutės Sparnuotos.
+## [Unreleased] (git)
 
-  * Continued portability improvements. Makefile now uses -lbsd-compat.
-    Factored allocation and string calls to utils.c.
+### Added
 
-  * Added extra/crond.service for systemd. Thanks to Miklos Vajna.
+- `extra/crond.service` for systemd. Thanks to Miklos Vajna.
 
-  * Many internal changes and annotations to pass splint review.
+### Fixed
 
-  * Documentation and error message updates.
+- Documentation and error message updates.
+
+### Changed
+
+- Numeric loglevels specified by `crond -l <level>` weren't being validated.
+  Now we no longer accept numeric loglevels; they must be specified
+  symbolically. Thanks to Rogutės Sparnuotos.
+- Continued portability improvements. Makefile now uses `-lbsd-compat`.
+  Factored allocation and string calls to `utils.c`.
+- Many internal changes and annotations to pass splint review.
 
 v4.6 09-March-2024
   * Took over ownership of project, since last version was over a decade ago. Changed associated URLs.
