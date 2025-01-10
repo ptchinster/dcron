@@ -5,15 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-todo
-  * add timestamps to -d output
-
-  * manual cron.update prodding doesn't affect cl_NotUntil
-
-  * Use hash when ID=... is supplied. FS#18292.
-
-  * FS#18352: Another thing: when moving the original file to the backup name, and the edited version is written in it's place, the file is written without preserving the same permissions as the original, so if you have a umask that prevents others from reading your stuff, crontab won't be able to load the new file.
-
 git
   * Numeric loglevels specified by 'crond -l <level>' weren't being validated.
     Now we no longer accept numeric loglevels; they must be specified
