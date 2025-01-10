@@ -185,29 +185,45 @@ By VMiklos and Matt Dillon.
 
 - `/tmp` race and misc cleanups from Emiel Kollof <emiel@gamepoint.net>
 
-v2.9
-    Modernize the code, remove strcpy() and sprintf() in favor of snprintf().
-    (Supplied by Christine Jamison <technobabe@mail.nwmagic.net>)
+## [2.9]
 
-v2.8
-    Fixed bug found by Christian HOFFMANN.  newline removal was broken
-    for lines that began with whitespace, causing crontab lines to be
-    chopped off.
+### Changed
 
-v2.7
-    Committed changes suggested by
-    Ragnar Hojland Espinosa <ragnar@redestb.es>
+- Modernize the code; remove `strcpy()` and `sprintf()` in favor of `snprintf()`.
+  (Supplied by Christine Jamison <technobabe@mail.nwmagic.net>)
 
-    Fixed a few printfs, removed strdup() function ( strdup() is now standard
-    in all major clib's )
+## [2.8]
 
-v2.4-2.6
+### Fixed
+
+- A bug found by Christian HOFFMANN:  newline removal was broken
+  for lines that began with whitespace, causing crontab lines
+  to be chopped off.
+
+## [2.7]
+
+- Committed changes suggested by Ragnar Hojland Espinosa <ragnar@redestb.es>
+
+### Fixed
+
+- A few printfs,
+
+### Removed
+
+- `strdup()` function
+  ( strdup() is now standard in all major clib's )
+
+## [2.4-2.6]
     ( changes lost )
 
-v2.3
-    dillon: Fixed bug in job.c -- if ChangeUser() fails, would return from child fork rather
-        then exit!  Oops.
+## [2.3]
 
-v2.2
-    dillon: Initial release
+### Fixed
+
+- dillon: bug in `job.c` -- if `ChangeUser()` fails, would return
+  from child fork rather then exit!  Oops.
+
+## [2.2]:w
+
+- dillon: Initial release
 
