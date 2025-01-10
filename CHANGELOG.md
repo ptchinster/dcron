@@ -161,17 +161,29 @@ Thanks to Juergen Daubert for testing and suggestions.
 - Various internal changes
 - Updated Makefile, manpage buildchain, and docs
 
-v3.2
-    Fixed a minor bug, remove the newline terminating a line only if there
-    is a newline to remove.
+## [3.2]
 
-v3.1
-    Add support for root-run crontab files in /etc/cron.d and rewrite a
-    good chunk of the crontab file management code.  By VMiklos and Matt
-    Dillon.
+### Fixed
 
-v3.0
-    Fix /tmp race and misc cleanups from Emiel Kollof <emiel@gamepoint.net>
+- A minor bug: remove the newline terminating a line only if there
+  is a newline to remove.
+
+## [3.1]
+
+By VMiklos and Matt Dillon.
+
+### Added
+
+- Support for `root-run` crontab files in `/etc/cron.d`
+
+### Changed
+- Rewrote a good chunk of the crontab file management code.
+
+## [3.0]
+
+### Fixed
+
+- `/tmp` race and misc cleanups from Emiel Kollof <emiel@gamepoint.net>
 
 v2.9
     Modernize the code, remove strcpy() and sprintf() in favor of snprintf().
