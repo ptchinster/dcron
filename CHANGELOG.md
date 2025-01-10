@@ -41,46 +41,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation updates
 
 
-v4.5  1-May-2011
-  * Some cron jobs were running multiple times. Now we make sure not to
-    ArmJobs that are already running; and not to resynchronize while jobs are
-    running; and to poll the DST setting. (Fixes Arch FS#18681; thanks to Vincent
-    Cappe and Paul Gideon Dann for identifying the second issue; and Tilman
-    Sauerbeck for identifying the third.)
+## [4.5] - 2011-05-01
 
-  * @monthly was wrongly being parsed the same as @yearly (fixes Arch
-    FS#19123). Thanks to Peter Johnson, Paul Gideon Dann, and Tilman Sauerbeck.
+Thanks for testing and feedback: Feifei Jia, Spider.007, Ray Kohler,
+Igor Zakharoff, Edward Hades, and Joe Lightning.
 
-  * extra/crond.rc: now uses $CROND_ARGS from /etc/conf.d/crond; sample included
-    as extra/crond.conf. Suggested by Eric Bélanger.
+### Fixed
 
-  * Running `/etc/rc.d/crond start` after startup could leak unwanted
-    environment into cronjobs; now we force crond to start in empty env
-    (fixes Arch FS#22085). Thanks to Mantas.
+- Some cron jobs were running multiple times. Now we make sure not to
+  ArmJobs that are already running; and not to resynchronize while jobs are
+  running; and to poll the DST setting. (Fixes Arch FS#18681; thanks to Vincent
+  Cappe and Paul Gideon Dann for identifying the second issue; and Tilman
+  Sauerbeck for identifying the third.)
+- @monthly was wrongly being parsed the same as @yearly (fixes Arch
+  FS#19123). Thanks to Peter Johnson, Paul Gideon Dann, and Tilman Sauerbeck.
+- Running `/etc/rc.d/crond start` after startup could leak unwanted
+  environment into cronjobs; now we force crond to start in empty env
+  (fixes Arch FS#22085). Thanks to Mantas.
+- Set LOGNAME environment variable in cronjobs. Requested by Michael
+  Trunner; fixes Arch FS#18338.
+- extra/crond.logrotate now correctly gets pid from /var/run/crond.pid
+  (fixes Arch FS#18039). Thanks to Kay Abendroth, revel, and Chlump Chatkupt.
+- `extra/crontab.vim` works around an issue where vim's writebackup would
+  interfere with crontab's security model (addresses Arch FS#18352).
+  Thanks to Armadillo and Simon Williams.
+- Makefile uses `$LDFLAGS` (fixes Arch FS#23784).
+  Thanks to Kristoffer Tidemann and Mike Frysinger.
 
-  * Also set LOGNAME environment variable in cronjobs. Requested by Michael
-    Trunner; fixes Arch FS#18338.
+### Changed
 
-  * extra/crond.logrotate now correctly gets pid from /var/run/crond.pid
-    (fixes Arch FS#18039). Thanks to Kay Abendroth, revel, and Chlump Chatkupt.
+- `extra/crond.rc`: now uses `$CROND_ARGS` from `/etc/conf.d/crond`; sample included
+  as `extra/crond.conf`. Suggested by Eric Bélanger.
+- `extra/prune-cronstamps` now only deletes files, and is formatted as a
+  @weekly crontab. Thanks to Alec Moskvin <alecm@gmx.com>.
+- defs.h sets default locations for CRONTABS and CRONSTAMPS beneath /var/spool/cron/,
+  as in earlier versions of dcron.
+- Documentation updates.
 
-  * extra/prune-cronstamps now only deletes files, and is formatted as a
-    @weekly crontab. Thanks to Alec Moskvin <alecm@gmx.com>.
-
-  * extra/crontab.vim works around an issue where vim's writebackup would
-    interfere with crontab's security model (addresses Arch FS#18352).
-    Thanks to Armadillo and Simon Williams.
-
-  * Makefile uses $LDFLAGS (fixes Arch FS#23784). Thanks to Kristoffer Tidemann
-    and Mike Frysinger.
-
-  * defs.h sets default locations for CRONTABS and CRONSTAMPS beneath /var/spool/cron/,
-    as in earlier versions of dcron.
-
-  * Documentation updates.
-
-  * Thanks for testing and feedback: Feifei Jia, Spider.007, Ray Kohler,
-    Igor Zakharoff, Edward Hades, and Joe Lightning.
 
 v4.4  17-Jan-2010
   * Finished mailjobs were being left as zombie processes. Fixed.
