@@ -106,17 +106,21 @@ Thanks to Juergen Daubert for more testing and suggestions.
     don't stomp CFLAGS environment variable, and added BINDIR,SBINDIR,MANDIR.
 
 
-v4.3  11-Jan-2010
-  * Internal refactoring to make buffer overflow checks
-    clearer and portability issues more explicit.
+## [4.3] - 2010-01-11
 
-  * Made file argument to -L mandatory; optional args to
-    getopt needs GNU extensions.
+Thanks to Juergen Daubert for testing and suggestions.
 
-  * Makefile tweaks. Added CRONTAB_GROUP for `make install`.
-    Renamed TIMESTAMPS -> CRONSTAMPS.
+### Added
 
-  * Thanks to Juergen Daubert for testing and suggestions.
+- Makefile: `CRONTAB_GROUP` for `make install`
+### Changed
+
+- Internal refactoring to make buffer overflow checks
+  clearer and portability issues more explicit.
+- Made file argument to `-L` mandatory; optional args to
+  `getopt` needs GNU extensions.
+- Makefile: renamed TIMESTAMPS -> CRONSTAMPS.
+
 
 v4.2  11-Jan-2010
   * Makefile tweaks; moved more constants to #defines.
