@@ -24,16 +24,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Factored allocation and string calls to `utils.c`.
 - Many internal changes and annotations to pass splint review.
 
-v4.6 09-March-2024
-  * Took over ownership of project, since last version was over a decade ago. Changed associated URLs.
+## [4.6] - 2024-05-09
 
-  * Fixed several bugs, both performance and output issues
+### Added
 
-  * Added pid file when run in daemon mode.
+- PID file when run in daemon mode.
 
-  * Documentation updates
+### Fixed
 
-  * Added hardened CFLAGS and changed linking process. No idea when last eyes were on this with security in mind.
+- Several bugs, both performance and output issues
+
+### Changed
+
+- Took over ownership of project, since last version was over a decade ago. Changed associated URLs.
+- Hardened CFLAGS and changed linking process. No idea when last eyes were on this with security in mind.
+- Documentation updates
+
 
 v4.5  1-May-2011
   * Some cron jobs were running multiple times. Now we make sure not to
