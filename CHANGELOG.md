@@ -122,8 +122,12 @@ Thanks to Juergen Daubert for testing and suggestions.
 - Makefile: renamed TIMESTAMPS -> CRONSTAMPS.
 
 
-v4.2  11-Jan-2010
-  * Makefile tweaks; moved more constants to #defines.
+## [4.2] - 2010-01-11
+
+### Changed
+
+- Makefile tweaks.
+- Moved more constants to #defines.
 
 v4.1  10-Jan-2010
   * Fixed bug in parsing some numeric fields in crontabs. (Terminus of range
