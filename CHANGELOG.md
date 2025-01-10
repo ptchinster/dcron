@@ -129,36 +129,37 @@ Thanks to Juergen Daubert for testing and suggestions.
 - Makefile tweaks.
 - Moved more constants to #defines.
 
-v4.1  10-Jan-2010
-  * Fixed bug in parsing some numeric fields in crontabs. (Terminus of range
-    wasn't being modded.)
+## [4.1] - 2010-01-10
 
-  * Updated Makefile to make it easier to customize timestamps at configure
-    time. Also, if LC_TIME is defined when crond runs, we use that instead of
-    compiled-in default (for logging to files, to customize syslog output use
-    syslog-ng's 'template' command).
+### Fixed
 
-  * Fixed Makefile permissions on crond and crontab binaries.
+- Parsing some numeric fields in crontabs.
+	(Terminus of range wasn't being modded.)
+- Fixed Makefile permissions on `crond` and `crontab` binaries.
+- Updated Makefile to make it easier to customize timestamps at configure
+  time. Also, if LC_TIME is defined when crond runs, we use that instead of
+  compiled-in default (for logging to files, to customize syslog output use
+  syslog-ng's 'template' command).
 
-v4.0  6-Jan-2010
-  * Jim Pryor took over development; folded in changes from his fork "yacron"
 
-  * Applied "Daniel's patch" from dcron 3.x tarballs to enable logging to syslog or
-    files. Added further logging improvements.
+## [4.0] - 2010-01-06
 
-  * Added -m user@host and -M mailer options
+### Added
 
-  * Various crontab syntax extensions, including "2nd Monday of every month",
-    @reboot, @daily, and finer-grained frequency specifiers.
+- Applied "Daniel's patch" from dcron 3.x tarballs to enable logging to
+  syslog or files. Added further logging improvements.
+- Options: `-m user@host` & `-M mailer`.
+- Various crontab syntax extensions, including "2nd Monday of every month",
+  @reboot, @daily, and finer-grained frequency specifiers.
+- Jobs can wait until AFTER other jobs have finished.
+- Enhanced parsing of cron.update file, to make it possible for scripts to
+  interact with a running crond in limited ways.
 
-  * Jobs can wait until AFTER other jobs have finished.
+### Changed
 
-  * Enhanced parsing of cron.update file, to make it possible for scripts to
-    interact with a running crond in limited ways.
-
-  * Various internal changes
-
-  * Updated Makefile, manpage buildchain, and docs
+- Jim Pryor took over development; folded in changes from his fork "yacron"
+- Various internal changes
+- Updated Makefile, manpage buildchain, and docs
 
 v3.2
     Fixed a minor bug, remove the newline terminating a line only if there
