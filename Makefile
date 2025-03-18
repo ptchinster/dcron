@@ -34,7 +34,6 @@ TABSRCS = crontab.c chuser.c
 TABOBJS = crontab.o chuser.o
 PROTOS = protos.h
 LIBS =
-LDFLAGS =
 DEFS =  -DVERSION='"$(VERSION)"' \
 		-DSCRONTABS='"$(SCRONTABS)"' -DCRONTABS='"$(CRONTABS)"' \
 		-DCRONSTAMPS='"$(CRONSTAMPS)"' -DLOG_IDENT='"$(LOG_IDENT)"' \
