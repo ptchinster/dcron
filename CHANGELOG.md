@@ -24,6 +24,7 @@ since the 4.7 release.
 - Continued portability improvements. Makefile now uses `-lbsd-compat`.
   Factored allocation and string calls to `utils.c`.
 - Many internal changes and annotations to pass splint review.
+- Fixed CLFAGS typo in Makefile
 
 ## [4.6] - 2024-05-09
 
